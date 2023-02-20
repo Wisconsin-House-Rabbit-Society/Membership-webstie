@@ -1,5 +1,5 @@
 """
-WSGI config for whrs_members project.
+WSGI config for whrs_membership project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'whrs_members.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'whrs_membership.settings')
 
 application = get_wsgi_application()
