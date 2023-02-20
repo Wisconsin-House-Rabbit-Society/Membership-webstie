@@ -21,10 +21,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-jsi3p9e148zq736)#@m#e*==co!mh0i#yzq_$yq+!f%1e9$1d)'
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'blank_key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG_MODE', True)
 
 ALLOWED_HOSTS = []
 
@@ -76,9 +76,12 @@ WSGI_APPLICATION = 'whrs_members.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'OPTIONS': {
-            'read_default_file': os.path.join(BASE_DIR, 'env/connection.cnf'),
-        },
+        'NAME': os.getenv('WHRS_MYSQL_DB_NAME', 'db'),
+        # running mysql in docker. Assuming using root user
+        'USER': os.getenv('WHRS_MYSQL_DB_USER', 'root'),
+        'PASSWORD': os.getenv('WHRS_MYSQL_DB_PASSWD', ''),
+        'HOST': os.getenv('WHRS_MYSQL_DB_HOST', 'localhost'),
+        'PORT': os.getenv('WHRS_MYSQL_DB_PORT', '5432'),
     }
 }
 

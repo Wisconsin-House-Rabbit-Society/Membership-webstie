@@ -1,0 +1,35 @@
+version: '3'
+services:
+  whrs_db_host:
+    env_file:
+      - ${SERVICE_ENV_FILE_PATH}
+    image: mysql:8
+    volumes:
+      - ${DATABASE_VOLUME_DIR}:/var/lib/mysql
+    command: --default-authentication-plugin=caching_sha2_password
+    environment:
+      MYSQL_USER: ${WHRS_MYSQL_DB_USER}
+      MYSQL_PASSWORD: ${WHRS_MYSQL_DB_PASSWD}
+      MYSQL_ROOT_PASSWORD: ${WHRS_MYSQL_DB_PASSWD}
+      MYSQL_TCP_PORT: ${WHRS_MYSQL_DB_PORT}
+      MYSQL_DATABASE: ${WHRS_MYSQL_DB_NAME}
+    ports:
+      - "${WHRS_MYSQL_DB_PORT}:${WHRS_MYSQL_DB_PORT}"
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"-u$WHRS_MYSQL_DB_USER", "-p$WHRS_MYSQL_DB_PASSWD", "ping", "-h", "whrs_db_host"]
+      timeout: 5s
+      retries: 10
+  whrs_server:
+    env_file:
+      - ${SERVICE_ENV_FILE_PATH}
+    build:
+        context: .
+        dockerfile: Dockerfile
+    entrypoint: ["./scripts/start-django.sh"]
+    volumes:
+      - .:/whrs
+    ports:
+      - "8000:8000"
+    depends_on:
+      whrs_db_host:
+        condition: service_healthy
