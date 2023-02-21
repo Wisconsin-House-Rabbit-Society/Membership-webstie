@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'member_info',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -75,7 +76,7 @@ WSGI_APPLICATION = 'whrs_membership.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': os.getenv('WHRS_DB_TYPE', 'django.db.backends.dummy'),
         'NAME': os.getenv('WHRS_MYSQL_DB_NAME', 'db'),
         # running mysql in docker. Assuming using root user
         'USER': os.getenv('WHRS_MYSQL_DB_USER', 'root'),
