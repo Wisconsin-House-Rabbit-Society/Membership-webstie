@@ -1,0 +1,16 @@
+@font-face {
+    font-family: "Bitter";
+    src: url("fonts/Bitter-VariableFont_wght.ttf");
+}
+
+@font-face {
+    font-family: "Bitter";
+    src: url("fonts/Bitter-Italic-VariableFont_wght.ttf");
+    font-style: italic;
+}
+
+* {font-family : "Bitter";}
+
+.error-normal {
+    color: Tomato;
+}

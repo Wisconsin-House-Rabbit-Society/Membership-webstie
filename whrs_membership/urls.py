@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from member_info.views import WhrsLoginView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path("login", WhrsLoginView.as_view(), name='login'),
 ]
