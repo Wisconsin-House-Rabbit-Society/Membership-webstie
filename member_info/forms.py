@@ -49,6 +49,9 @@ class WhrsAuthenticatonForm(forms.Form):
         if self.fields["email"].label is None:
             self.fields["email"].label = capfirst(self.email_field.verbose_name)
 
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'form-control'
+
     def clean(self):
         email = self.cleaned_data.get("email")
         password = self.cleaned_data.get("password")

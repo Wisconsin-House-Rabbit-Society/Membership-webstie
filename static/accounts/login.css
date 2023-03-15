@@ -1,0 +1,30 @@
+.login-form {
+    padding: 10vh;
+    display: flex;
+    border: 1px solid LightGray;
+    border-radius: 25px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    align-self: center;
+    width: 25vw;
+    padding-bottom: 15vh;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    margin-bottom: 10px;
+    width: 20vw;
+}
+
+label {
+    align-self:flex-start;
+}
+
+button {
+    margin-top: 3vh;
+    width: 20vw;
+}

@@ -11,6 +11,21 @@
 
 * {font-family : "Bitter";}
 
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+    min-width: 100vw;
+}
+
 .error-normal {
     color: Tomato;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 30px;
+    margin: 1px;
 }

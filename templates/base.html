@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 {% load static %}
+{% load bootstrap5 %}
 <head>
+    {% load filters %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
     <link rel="stylesheet" href="{% static 'base.css' %}">
     <title>{% block title %}Wisconsin House Rabbit Society{% endblock %}</title>
 </head>
