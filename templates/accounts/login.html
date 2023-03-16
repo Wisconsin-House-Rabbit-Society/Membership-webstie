@@ -6,8 +6,9 @@
 <link rel="stylesheet" href="{% static 'accounts/login.css' %}">
 
 <div class="center-container container">
+<div class="logo-row"><img src="{% static 'whrs_logo_1.png' %}"></div>
 <div class="login-form">
-    <p class="title">Log in</p>
+    <p class="title">Membership Site Login</p>
     {% if form.errors %}
     <p class="error-normal">The credential entered is not correct. Please try again.</p>
     {% endif %}
@@ -20,7 +21,7 @@
     </div>
     <div class="form-group">
         <label class="control-label">Password</label>
-        {{ form.password|addplaceholder:'Super secret password' }}
+        {{ form.password|addplaceholder:'SuperSecretPassword' }}
     </div>
 
     {# Assumes you set up the password_reset view in your URLconf #}
